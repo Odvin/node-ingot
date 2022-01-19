@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "required": ["sports", "colleges", "athletes"],
+  "additionalProperties": false,
+  "properties": {
+    "sports": {
+      "type": "boolean"
+    },
+    "colleges": {
+      "type": "boolean"
+    },
+    "athletes": {
+      "type": "boolean"
+    }
+  }
+}

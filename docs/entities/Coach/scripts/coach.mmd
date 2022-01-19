@@ -1,0 +1,28 @@
+erDiagram
+  COACH ||--|| SPORTIDS : elements
+  COACH ||--|| CONTACTS : contains
+  COACH ||--|| ROLE : oneOf
+  COACH {
+    ObjectID mongo_id
+    integer mysqlId
+    integer ncsaId
+    date updatedAt
+    string name
+    string surname
+    enum role
+    object contacts
+    array sportIds
+    ObjectId collegeId
+    }
+  SPORTIDS {
+    ObjectId sportId
+  }
+  ROLE {
+    string manager
+    string coach
+  }
+  CONTACTS {
+    string email
+    string twitter
+    string phone
+  }

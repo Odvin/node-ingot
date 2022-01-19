@@ -1,0 +1,21 @@
+erDiagram
+  SPORT ||--|| POSITIONS : elements
+  SPORT ||--|| GENDER : oneOf
+  SPORT {
+    ObjectID mongo_id
+    integer ncsaId
+    string title
+    date updatedAt
+    string shortTitle
+    boolean published
+    array positions
+    enum gender
+    }
+  POSITIONS {
+    string label
+    string shortLabel
+  }
+  GENDER {
+    string M
+    string F
+  }

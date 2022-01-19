@@ -1,0 +1,185 @@
+version: '3.5'
+
+services:
+  mongo01:
+    container_name: mongo01
+    image: mongo:4
+    command: --replSet mongo-cluster --bind_ip_all
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo01-store:/var/lib/mongo/data
+    networks:
+      - athletes
+    restart: always
+
+  mongo02:
+    container_name: mongo02
+    image: mongo:4
+    command: --replSet mongo-cluster --bind_ip_all
+    expose:
+      - 27017
+    ports:
+      - 27018:27017
+    volumes:
+      - mongo02-store:/var/lib/mongo/data
+    networks:
+      - athletes
+    restart: always
+
+  mongo03:
+    container_name: mongo03
+    image: mongo:4
+    command: --replSet mongo-cluster --bind_ip_all
+    expose:
+      - 27017
+    ports:
+      - 27019:27017
+    volumes:
+      - mongo03-store:/var/lib/mongo/data
+    networks:
+      - athletes
+    restart: always
+
+  mongo-setup:
+    container_name: mongo-setup
+    image: mongo:4
+    depends_on:
+      - mongo01
+      - mongo02
+      - mongo03
+    volumes:
+      - ./src/databases/mongodb:/replicator
+    networks:
+      - athletes
+    restart: 'no'
+    entrypoint: ['bash', '/replicator/replicate.sh']
+
+  postgres-db:
+    container_name: athletes-postgres
+    image: 'postgres:12'
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    expose:
+      - ${POSTGRES_PORT}
+    volumes:
+      - postgres-store:/var/lib/pgsql/data
+      - ./src/databases/postgre/migrations:/usr/src/migrations
+    networks:
+      - athletes
+
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+    container_name: es01
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es02,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es01-store:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - athletes
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+    container_name: es02
+    environment:
+      - node.name=es02
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es02-store:/usr/share/elasticsearch/data
+    networks:
+      - athletes
+
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+    container_name: es03
+    environment:
+      - node.name=es03
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es03-store:/usr/share/elasticsearch/data
+    networks:
+      - athletes
+
+  kib01:
+    image: docker.elastic.co/kibana/kibana:7.12.0
+    container_name: kib01
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://es01:9200
+      ELASTICSEARCH_HOSTS: '["http://es01:9200","http://es02:9200","http://es03:9200"]'
+    networks:
+      - athletes
+
+  athletes-api-server:
+    container_name: athletes-api-server
+    image: node:14
+    working_dir: /usr/src/athletes-api-server
+    env_file: .env
+    ports:
+      - $API_EXTERNAL_PORT:$API_PORT
+    expose:
+      - $API_EXTERNAL_PORT
+    volumes:
+      - ./:/usr/src/athletes-api-server
+    networks:
+      - athletes
+    command: npm run start:dev
+
+volumes:
+  athletes-data:
+    driver: local
+  mongo01-store:
+    driver: local
+  mongo02-store:
+    driver: local
+  mongo03-store:
+    driver: local
+  postgres-store:
+    driver: local
+  es01-store:
+    driver: local
+  es02-store:
+    driver: local
+  es03-store:
+    driver: local
+
+networks:
+  athletes:
+    name: athletes-dev-network
+    driver: bridge

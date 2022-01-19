@@ -1,0 +1,21 @@
+erDiagram
+  TAG ||--|| KIND : oneOf
+  TAG {
+    ObjectID mongo_id
+    ObjectID collegeId
+    ObjectID sportId
+    ObjectID coachId
+    string title
+    string description
+    date updatedAt
+    boolean archived
+    string color
+    string icon
+    enum kind
+    integer position
+    boolean private
+    }
+  KIND {
+    string primary
+    string regular
+  }

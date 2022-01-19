@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "minProperties": 2,
+  "required": ["_id"],
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{24}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "kind": {
+      "enum": ["primary", "regular"]
+    },
+    "private": {
+      "type": "boolean"
+    },
+    "color": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "position": {
+      "type": "number"
+    }
+  }
+}

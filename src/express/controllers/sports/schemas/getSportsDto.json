@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "required": ["_id"],
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{24}$"
+    }
+  }
+}

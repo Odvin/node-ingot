@@ -1,0 +1,21 @@
+erDiagram
+  CLUB ||--|| TEAMS : elements
+  CLUB {
+    ObjectID mongo_id
+    integer extIdA
+    date updatedAt
+    string name
+    string director
+    string phone
+    string email
+    string webUrl
+    array teams
+    }
+  TEAMS {
+    string name
+    ObjectId fk_sports_id
+    string coach
+    string phone
+    string email
+    string webUrl
+  }

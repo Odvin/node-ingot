@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "required": ["sportId"],
+  "additionalProperties": false,
+  "properties": {
+    "sportId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{24}$"
+    }
+  }
+}

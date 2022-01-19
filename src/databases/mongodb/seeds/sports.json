@@ -1,0 +1,810 @@
+[
+  {
+    "ncsaId": 17696,
+    "title": "Women's Volleyball",
+    "shortTitle": "FVB",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Middle",
+        "shortLabel": "MB"
+      },
+      {
+        "label": "Right Side",
+        "shortLabel": "RS"
+      },
+      {
+        "label": "Outside",
+        "shortLabel": "OH"
+      },
+      {
+        "label": "Setter",
+        "shortLabel": "S"
+      },
+      {
+        "label": "Libero",
+        "shortLabel": "L"
+      },
+      {
+        "label": "Defensive Specialist",
+        "shortLabel": "DS"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17695,
+    "title": "Men's Volleyball",
+    "shortTitle": "MVB",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "Middle",
+        "shortLabel": "MB"
+      },
+      {
+        "label": "Right Side",
+        "shortLabel": "RS"
+      },
+      {
+        "label": "Outside",
+        "shortLabel": "OH"
+      },
+      {
+        "label": "Setter",
+        "shortLabel": "S"
+      },
+      {
+        "label": "Libero",
+        "shortLabel": "L"
+      },
+      {
+        "label": "Defensive Specialist",
+        "shortLabel": "DS"
+      },
+      {
+        "label": "Middle Hitter",
+        "shortLabel": "MH"
+      },
+      {
+        "label": "Opposite",
+        "shortLabel": "OPP"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17639,
+    "title": "women's Basketball",
+    "shortTitle": "FBB",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Post",
+        "shortLabel": "P"
+      },
+      {
+        "label": "Wing",
+        "shortLabel": "W"
+      },
+      {
+        "label": "Point Guard",
+        "shortLabel": "PG"
+      },
+      {
+        "label": "Shooting Guard",
+        "shortLabel": "SG"
+      },
+      {
+        "label": "Small Forward",
+        "shortLabel": "SF"
+      },
+      {
+        "label": "Power Forward",
+        "shortLabel": "PF"
+      },
+      {
+        "label": "Center",
+        "shortLabel": "C"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17638,
+    "title": "Mens Basketball",
+    "shortTitle": "MBB",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "Point Guard",
+        "shortLabel": "PG"
+      },
+      {
+        "label": "Shooting Guard",
+        "shortLabel": "SG"
+      },
+      {
+        "label": "Small Forward",
+        "shortLabel": "SF"
+      },
+      {
+        "label": "Power Forward",
+        "shortLabel": "PF"
+      },
+      {
+        "label": "Center",
+        "shortLabel": "C"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17634,
+    "title": "Womens Softball",
+    "shortTitle": "FSB",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Pitcher",
+        "shortLabel": "P"
+      },
+      {
+        "label": "Catcher",
+        "shortLabel": "C"
+      },
+      {
+        "label": "First Base",
+        "shortLabel": "1B"
+      },
+      {
+        "label": "Second Base",
+        "shortLabel": "2B"
+      },
+      {
+        "label": "Third Base",
+        "shortLabel": "3B"
+      },
+      {
+        "label": "Shortstop",
+        "shortLabel": "SS"
+      },
+      {
+        "label": "Outfield",
+        "shortLabel": "OF"
+      },
+      {
+        "label": "Utility",
+        "shortLabel": "UT"
+      },
+      {
+        "label": "Infield",
+        "shortLabel": "IF"
+      },
+      {
+        "label": "Center Fielder",
+        "shortLabel": "CF"
+      },
+      {
+        "label": "Designated Hitter",
+        "shortLabel": "DH"
+      },
+      {
+        "label": "Infielder",
+        "shortLabel": "INF"
+      },
+      {
+        "label": "Left Fielder",
+        "shortLabel": "LF"
+      },
+      {
+        "label": "LHP",
+        "shortLabel": "LHP"
+      },
+      {
+        "label": "Right Fielder",
+        "shortLabel": "RF"
+      },
+      {
+        "label": "RHP",
+        "shortLabel": "RHP"
+      },
+      {
+        "label": "Slapper",
+        "shortLabel": "Slapp"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17711,
+    "title": "women's Field Hockey",
+    "shortTitle": "FFH",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Forward",
+        "shortLabel": "FW"
+      },
+      {
+        "label": "Midfield",
+        "shortLabel": "MD"
+      },
+      {
+        "label": "Back",
+        "shortLabel": "BK"
+      },
+      {
+        "label": "Goalkeeper",
+        "shortLabel": "GK"
+      },
+      {
+        "label": "Defenders",
+        "shortLabel": "D"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17711,
+    "title": "women's Ice Hockey",
+    "shortTitle": "FIH",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Center",
+        "shortLabel": "C"
+      },
+      {
+        "label": "Goalie",
+        "shortLabel": "G"
+      },
+      {
+        "label": "Left Defenseman",
+        "shortLabel": "LD"
+      },
+      {
+        "label": "Left Wing",
+        "shortLabel": "LW"
+      },
+      {
+        "label": "Right Defenseman",
+        "shortLabel": "D"
+      },
+      {
+        "label": "Right Wing",
+        "shortLabel": "RW"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17665,
+    "title": "Men's Ice Hockey",
+    "shortTitle": "MIH",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "Center",
+        "shortLabel": "C"
+      },
+      {
+        "label": "Goalie",
+        "shortLabel": "G"
+      },
+      {
+        "label": "Left Defenseman",
+        "shortLabel": "LD"
+      },
+      {
+        "label": "Left Wing",
+        "shortLabel": "LW"
+      },
+      {
+        "label": "Right Defenseman",
+        "shortLabel": "D"
+      },
+      {
+        "label": "Right Wing",
+        "shortLabel": "RW"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17708,
+    "title": "women's Lacrosse",
+    "shortTitle": "FL",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Attack",
+        "shortLabel": "A"
+      },
+      {
+        "label": "Defense",
+        "shortLabel": "D"
+      },
+      {
+        "label": "Draw Specialist",
+        "shortLabel": "Draw"
+      },
+      {
+        "label": "Goalie",
+        "shortLabel": "G"
+      },
+      {
+        "label": "Midfielder",
+        "shortLabel": "M"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17707,
+    "title": "Men's Lacrosse",
+    "shortTitle": "ML",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "Attack",
+        "shortLabel": "Attac"
+      },
+      {
+        "label": "Defense",
+        "shortLabel": "Defen"
+      },
+      {
+        "label": "Faceoff",
+        "shortLabel": "Faceo"
+      },
+      {
+        "label": "Goalie",
+        "shortLabel": "Goali"
+      },
+      {
+        "label": "Long Stick Midfielders",
+        "shortLabel": "Longs"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17684,
+    "title": "Women's Soccer",
+    "shortTitle": "FS",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Attacking Midfielder",
+        "shortLabel": "AM"
+      },
+      {
+        "label": "Center Back",
+        "shortLabel": "CB"
+      },
+      {
+        "label": "Defensive Midfielder",
+        "shortLabel": "Def M"
+      },
+      {
+        "label": "Forward",
+        "shortLabel": "FW"
+      },
+      {
+        "label": "Goalkeeper",
+        "shortLabel": "GK"
+      },
+      {
+        "label": "Outside Back",
+        "shortLabel": "OB"
+      },
+      {
+        "label": "Outside Midfielder",
+        "shortLabel": "OM"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17683,
+    "title": "Men's Soccer",
+    "shortTitle": "MS",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "Attacking Midfielder",
+        "shortLabel": "AM"
+      },
+      {
+        "label": "Center Back",
+        "shortLabel": "CB"
+      },
+      {
+        "label": "Defensive Midfielder",
+        "shortLabel": "Def M"
+      },
+      {
+        "label": "Forward",
+        "shortLabel": "FW"
+      },
+      {
+        "label": "Goalkeeper",
+        "shortLabel": "GK"
+      },
+      {
+        "label": "Outside Back",
+        "shortLabel": "OB"
+      },
+      {
+        "label": "Outside Midfielder",
+        "shortLabel": "OM"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17690,
+    "title": "Women's Tennis",
+    "shortTitle": "FT",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "Doubles",
+        "shortLabel": "Doubl"
+      },
+      {
+        "label": "Singles",
+        "shortLabel": "Singl"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17689,
+    "title": "Men's Tennis",
+    "shortTitle": "MT",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "Doubles",
+        "shortLabel": "Doubl"
+      },
+      {
+        "label": "Singles",
+        "shortLabel": "Singl"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17702,
+    "title": "Women's Water Polo'",
+    "shortTitle": "FWP",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "2M",
+        "shortLabel": "2M"
+      },
+      {
+        "label": "2M Defender",
+        "shortLabel": "2M De"
+      },
+      {
+        "label": "Driver",
+        "shortLabel": "Drive"
+      },
+      {
+        "label": "Flat",
+        "shortLabel": "Flat"
+      },
+      {
+        "label": "Goalie",
+        "shortLabel": "Goali"
+      },
+      {
+        "label": "Hole",
+        "shortLabel": "Hole"
+      },
+      {
+        "label": "Point Guard",
+        "shortLabel": "Point"
+      },
+      {
+        "label": "Utility",
+        "shortLabel": "Utili"
+      },
+      {
+        "label": "Wing",
+        "shortLabel": "Wing"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17701,
+    "title": "Men's Water Polo",
+    "shortTitle": "MWP",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "2M",
+        "shortLabel": "2M"
+      },
+      {
+        "label": "2M Defender",
+        "shortLabel": "2M De"
+      },
+      {
+        "label": "Driver",
+        "shortLabel": "Drive"
+      },
+      {
+        "label": "Flat",
+        "shortLabel": "Flat"
+      },
+      {
+        "label": "Goalie",
+        "shortLabel": "Goali"
+      },
+      {
+        "label": "Hole",
+        "shortLabel": "Hole"
+      },
+      {
+        "label": "Point Guard",
+        "shortLabel": "Point"
+      },
+      {
+        "label": "Utility",
+        "shortLabel": "Utili"
+      },
+      {
+        "label": "Wing",
+        "shortLabel": "Wing"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17731,
+    "title": "Women's Wrestling",
+    "shortTitle": "FW",
+    "gender": "F",
+    "published": true,
+    "positions": [
+      {
+        "label": "101 lb",
+        "shortLabel": "101#"
+      },
+      {
+        "label": "109 lb",
+        "shortLabel": "109#"
+      },
+      {
+        "label": "116 lb",
+        "shortLabel": "116#"
+      },
+      {
+        "label": "123 lb",
+        "shortLabel": "123#"
+      },
+      {
+        "label": "130 lb",
+        "shortLabel": "130#"
+      },
+      {
+        "label": "136 lb",
+        "shortLabel": "136#"
+      },
+      {
+        "label": "143 lb",
+        "shortLabel": "143#"
+      },
+      {
+        "label": "155 lb",
+        "shortLabel": "155#"
+      },
+      {
+        "label": "170 lb",
+        "shortLabel": "170#"
+      },
+      {
+        "label": "191 lb",
+        "shortLabel": "191#"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17635,
+    "title": "Men's Wrestling",
+    "shortTitle": "MW",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "125 lb",
+        "shortLabel": "125#"
+      },
+      {
+        "label": "133 lb",
+        "shortLabel": "133#"
+      },
+      {
+        "label": "141 lb",
+        "shortLabel": "141#"
+      },
+      {
+        "label": "149 lb",
+        "shortLabel": "149#"
+      },
+      {
+        "label": "157 lb",
+        "shortLabel": "157#"
+      },
+      {
+        "label": "165 lb",
+        "shortLabel": "165#"
+      },
+      {
+        "label": "174 lb",
+        "shortLabel": "174#"
+      },
+      {
+        "label": "184 lb",
+        "shortLabel": "184#"
+      },
+      {
+        "label": "197 lb",
+        "shortLabel": "197#"
+      },
+      {
+        "label": "285 lb",
+        "shortLabel": "285#"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17706,
+    "title": "Men's Baseball",
+    "shortTitle": "MB",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "1st Base",
+        "shortLabel": "1B"
+      },
+      {
+        "label": "2nd Base",
+        "shortLabel": "2B"
+      },
+      {
+        "label": "3rd Base",
+        "shortLabel": "3B"
+      },
+      {
+        "label": "Catcher",
+        "shortLabel": "C"
+      },
+      {
+        "label": "Center Fielder",
+        "shortLabel": "CF"
+      },
+      {
+        "label": "Left Fielder",
+        "shortLabel": "LF"
+      },
+      {
+        "label": "Left Handed Hitter",
+        "shortLabel": "LHH"
+      },
+      {
+        "label": "LHP",
+        "shortLabel": "LHP"
+      },
+      {
+        "label": "Right Fielder",
+        "shortLabel": "RF"
+      },
+      {
+        "label": "Right Handed Hitter",
+        "shortLabel": "RHH"
+      },
+      {
+        "label": "RHP",
+        "shortLabel": "RHP"
+      },
+      {
+        "label": "Switch Hitter",
+        "shortLabel": "SH"
+      },
+      {
+        "label": "Shortstop",
+        "shortLabel": "SS"
+      }
+    ]
+  },
+  {
+    "ncsaId": 17633,
+    "title": "Men's Football",
+    "shortTitle": "MF",
+    "gender": "M",
+    "published": true,
+    "positions": [
+      {
+        "label": "Athlete",
+        "shortLabel": "Ath"
+      },
+      {
+        "label": "Center",
+        "shortLabel": "C"
+      },
+      {
+        "label": "Cornerback",
+        "shortLabel": "CB"
+      },
+      {
+        "label": "Defensive End",
+        "shortLabel": "DE"
+      },
+      {
+        "label": "Defensive Tackle",
+        "shortLabel": "DT"
+      },
+      {
+        "label": "Fullback",
+        "shortLabel": "FB"
+      },
+      {
+        "label": "Kicker",
+        "shortLabel": "K"
+      },
+      {
+        "label": "Long Snapper",
+        "shortLabel": "LS"
+      },
+      {
+        "label": "Middle Linebacker",
+        "shortLabel": "MLB"
+      },
+      {
+        "label": "Offensive Guard",
+        "shortLabel": "OG"
+      },
+      {
+        "label": "Outside Linebacker",
+        "shortLabel": "OLB"
+      },
+      {
+        "label": "Offensive Tackle",
+        "shortLabel": "OT"
+      },
+      {
+        "label": "Punter",
+        "shortLabel": "P"
+      },
+      {
+        "label": "Quarterback",
+        "shortLabel": "QB"
+      },
+      {
+        "label": "Running Back",
+        "shortLabel": "RB"
+      },
+      {
+        "label": "Safety",
+        "shortLabel": "S"
+      },
+      {
+        "label": "Tight End",
+        "shortLabel": "TE"
+      },
+      {
+        "label": "Wide Receiver",
+        "shortLabel": "WR"
+      }
+    ]
+  }
+]

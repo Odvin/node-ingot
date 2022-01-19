@@ -1,0 +1,114 @@
+{
+  "type": "object",
+  "required": [
+    "mysqlId",
+    "ipedsId",
+    "title",
+    "shortTitle",
+    "address",
+    "location",
+    "student",
+    "hidden"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "mysqlId": {
+      "type": "integer"
+    },
+    "ipedsId": {
+      "type": "integer"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "shortTitle": {
+      "type": "string"
+    },
+    "address": {
+      "type": "object",
+      "required": ["state", "zip", "city", "street"],
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": ["Point"]
+        },
+        "coordinates": {
+          "type": "array",
+          "maxItems": 2,
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "phone": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "general": {
+          "type": "string"
+        },
+        "financial": {
+          "type": "string"
+        },
+        "administrative": {
+          "type": "string"
+        }
+      }
+    },
+    "url": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "school": {
+          "type": "string"
+        },
+        "athletes": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
+      }
+    },
+    "student": {
+      "type": "object",
+      "required": ["men", "women"],
+      "additionalProperties": false,
+      "properties": {
+        "men": {
+          "type": "integer"
+        },
+        "women": {
+          "type": "integer"
+        }
+      }
+    },
+    "hidden": {
+      "type": "boolean"
+    }
+  }
+}

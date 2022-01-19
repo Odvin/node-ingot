@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "required": [
+      "athleteId",
+      "pinned",
+      "text"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "athleteId": {
+        "type": "string",
+        "pattern": "^[a-fA-F0-9]{24}$"
+      },
+      "pinned": {
+        "type": "boolean"
+      },
+      "text": {
+        "type": "string"
+      }
+    }
+  }

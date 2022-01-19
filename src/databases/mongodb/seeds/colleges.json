@@ -1,0 +1,64 @@
+[
+  {
+    "mysqlId": 6327,
+    "ipedsId": 240444,
+    "title": "University of Wisconsin  Madison",
+    "shortTitle": "Univ. of Wisconsin - Madison",
+    "address": {
+      "state": "WI",
+      "zip": "53711",
+      "city": "Madison",
+      "street": "N/a"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [89.4132996, 43.0778008]
+    },
+    "phone": {
+      "general": "6082658547",
+      "financial": "6082623060",
+      "administrative": "6082623961"
+    },
+    "url": {
+      "school": "wisc.edu",
+      "athletes": "www.uwbadgers.com",
+      "logo": "5437459.jpg"
+    },
+    "student": {
+      "men": 20,
+      "women": 21
+    },
+    "hidden": false
+  },
+  {
+    "mysqlId": 20,
+    "ipedsId": 100663,
+    "title": "University of Alabama Birmingham",
+    "shortTitle": "Univ. of Alabama at Birmingham",
+    "address": {
+      "state": "AL",
+      "zip": "352940110",
+      "city": "Birmingham",
+      "street": "Administration Bldg Suite 1070"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [-86.8087006, 33.5065002]
+    },
+    "phone": {
+      "general": "2059344011",
+      "financial": "2059348223",
+      "administrative": "2059348221"
+    },
+    "url": {
+      "school": "uab.edu",
+      "athletes": "www.uabsports.com",
+      "logo": "5468707.png"
+    },
+    "student": {
+      "men": 0,
+      "women": 0
+    },
+    "hidden": false
+  }
+]

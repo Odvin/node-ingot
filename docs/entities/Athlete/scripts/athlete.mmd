@@ -1,0 +1,86 @@
+erDiagram
+  ATHLETE ||--|| CONTACTS : contains
+  ATHLETE ||--|| CLUB : contains
+  ATHLETE ||--|| TEAM : contains
+  TEAM ||--|| POSITIONS : elements
+  ATHLETE ||--|| ACADEMICS : contains
+  ACADEMICS ||--|| SCHOLARSTATUS : oneOf
+  ATHLETE ||--|| SCHOOL : contains
+  ATHLETE ||--|| PARENTS : elements
+  ATHLETE ||--|| PHYSICAL : contains
+  PHYSICAL ||--|| HANDED : oneOf
+  ATHLETE ||--|| SOCIAL : contains
+  ATHLETE {
+    ObjectID mongo_id
+    integer extIdA
+    date updatedAt
+    string name
+    string surname
+    string nick
+    integer graduation
+    date birthday
+    object contacts
+    array parents
+    enum gender
+    }
+  CONTACTS {
+    string email
+    string phone
+    string state
+    string address
+    string city
+    string zip
+  }
+  CLUB {
+    ObjectID mongo_id
+    string title
+  }
+  TEAM {
+    string title
+    integer uniform
+    array position
+  }
+  POSITIONS {
+    string label
+  }
+  ACADEMICS {
+    number gpa
+    integer act
+    integer sat
+    enum scholarStatus
+  }
+  SCHOLARSTATUS {
+    string Uncommitted
+    string Committed
+  }
+  SCHOOL {
+    string title
+    string address
+    string city
+    string state
+    string zip
+  }
+  PARENTS {
+    string relation
+    string name
+    string email
+    string phone
+  }
+  PHYSICAL {
+    number height
+    number weight
+    number reach
+    number approach
+    number block
+    emub handed
+  }
+  HANDED {
+    string R
+    string L
+  }
+  SOCIAL {
+    string facebook
+    string instagram
+    string twitter
+    string snapchat
+  }

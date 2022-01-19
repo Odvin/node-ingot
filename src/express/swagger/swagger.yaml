@@ -1,0 +1,986 @@
+openapi: 3.0.1
+info:
+  title: Coach Packet REST API for Athletes-service
+  description: Coach Packet Athletes-service openApi 3.0.1 specification
+  version: '1.0.0'
+  contact:
+    email: odv4mail@gmail.com
+servers:
+  - description: Localhost
+    url: http://localhost:4000
+tags:
+  - name: admins
+    description: Secured Admin-only calls
+  - name: athletes
+    description: Athletes information
+  - name: coaches
+    description: Coaches information
+  - name: colleges
+    description: College information
+  - name: sports
+    description: Sports information
+  - name: tags
+    description: Tags information
+paths:
+  /admins/login:
+    post:
+      tags:
+        - admins
+      summary: Authorize the service admin
+      operationId: authorizeAdmin
+      description: Provide admin credentials and receive appropriate token
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  adminToken:
+                    type: string
+                    description: Admin acsses token
+                    example: 'kdhfahljk89534....'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Admin email
+                  example: admin@athletes.com
+                password:
+                  type: string
+                  description: Admin password
+                  example: adminPassword
+              required:
+                - email
+                - password
+
+  /admins/seeding:
+    post:
+      tags:
+        - admins
+      summary: Seeding database
+      operationId: databaseSeeding
+      description: Populate database with data for dev. operations
+      security:
+        - userLoginBearerAuth: []
+      responses:
+        '200':
+          description: Information about seeded data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sports:
+                    type: object
+                    properties:
+                      ok:
+                        type: number
+                        description: Operation status for sports collection
+                        example: 1
+                      n:
+                        type: number
+                        description: Number of the inserted documents
+                        example: 20
+                  colleges:
+                    type: object
+                    properties:
+                      ok:
+                        type: number
+                        description: Operation status for colleges collection
+                        example: 1
+                      n:
+                        type: number
+                        description: Number of the inserted documents
+                        example: 20
+                  athletes:
+                    type: object
+                    properties:
+                      ok:
+                        type: number
+                        description: Operation status for athletes collection
+                        example: 1
+                      n:
+                        type: number
+                        description: Number of the inserted documents
+                        example: 20
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sports:
+                  type: boolean
+                  description: If true the collection sports will be seeded
+                  example: true
+                colleges:
+                  type: boolean
+                  description: If true the collection colleges will be seeded
+                  example: true
+                athletes:
+                  type: boolean
+                  description: If true the collection athletes will be seeded
+                  example: true
+              required:
+                - sports
+                - colleges
+                - athletes
+
+  /athletes:
+    get:
+      tags:
+        - athletes
+      summary: Search athletes
+      operationId: getAthletes
+      description: |
+        Operations with athletes
+      security:
+        - userLoginBearerAuth: []
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+
+  /colleges:
+    post:
+      tags:
+        - colleges
+      summary: Operations with colleges data
+      operationId: collegeInfo
+      description: |
+        Operations with colleges
+      security:
+        - userLoginBearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/College'
+                - required:
+                    - mysqlId
+                    - ipedsId
+                    - title
+                    - address
+                    - location
+                    - student
+                    - hidden
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/College'
+    patch:
+      tags:
+        - colleges
+      summary: Operations with colleges data
+      operationId: patchCollege
+      description: |
+        Operations with colleges
+      security:
+        - userLoginBearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/College'
+                - required:
+                    - '_id'
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/College'
+    get:
+      tags:
+        - colleges
+      summary: Get the college by Id
+      operationId: getCollege
+      description: |
+        Operations with colleges
+      security:
+        - userLoginBearerAuth: []
+      parameters:
+        - in: query
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/College'
+
+  /sports:
+    post:
+      tags:
+        - sports
+      summary: Operations with sports data
+      operationId: sportInfo
+      description: |
+        Operations with sports
+      security:
+        - userLoginBearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportCreateDto'
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportAttributes'
+    patch:
+      tags:
+        - sports
+      summary: Operations with sports data
+      operationId: patchSport
+      description: |
+        Operations with sports
+      security:
+        - userLoginBearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsUpdateDto'
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportAttributes'
+    get:
+      tags:
+        - sports
+      summary: Get the sport by Id
+      operationId: getSport
+      description: |
+        Operations with sports
+      security:
+        - userLoginBearerAuth: []
+      parameters:
+        - in: query
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportAttributes'
+
+  /tags:
+    post:
+      tags:
+        - tags
+      summary: Operations with tags data
+      operationId: postTag
+      description: |
+        Operations with tags
+      security:
+        - userLoginBearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagCreateDto'
+      responses:
+        '200':
+          description: Tag attributes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagAttributes'
+    patch:
+      tags:
+        - tags
+      summary: Operations with tags data
+      operationId: patchTag
+      description: |
+        Operations with tags
+      security:
+        - userLoginBearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagUpdateDto'
+      responses:
+        '200':
+          description: Tag attributes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagAttributes'
+    get:
+      tags:
+        - tags
+      summary: Get the tag by Id
+      operationId: getTag
+      description: |
+        Operations with tags
+      security:
+        - userLoginBearerAuth: []
+      parameters:
+        - in: query
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagAttributes'
+
+  /tags/collection/{sportId}:
+    get:
+      tags:
+        - tags
+      summary: Get the tags for college sport
+      operationId: getCollegeSportTag
+      description: |
+        Receive the list of tags for the college sport
+      security:
+        - userLoginBearerAuth: []
+      parameters:
+        - in: path
+          name: sportId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TagAttributes'
+
+  /coaches:
+    post:
+      tags:
+        - coaches
+      summary: Operations with coaches data
+      operationId: postCoach
+      description: |
+        Operations with coaches
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cognitoToken:
+                  type: string
+                  description: Cognito token
+              required:
+                - cognitoToken
+      responses:
+        '200':
+          description: Coach attributes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attributes:
+                    $ref: '#/components/schemas/CoachAttributes'
+                  token:
+                    type: string
+                    description: Service internal token
+                    example: eyJhbGciOiJIUzI1N...
+                required:
+                  - attributes
+                  - token
+
+  /coaches/pin-tags:
+    post:
+      tags:
+        - coaches
+      summary: Operations with pinned tags
+      operationId: pinCoachTags
+      description: |
+        A coach may pin a set of tags to mark them as most needed for use.
+      security:
+        - userLoginBearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tags:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                  pattern: '^[a-fA-F0-9]24}$'
+                  example: [60d327dc90f320008498ea7d, 70d327dc90f320108498ea7d]
+                  description: Tags ids
+              required:
+                - tags
+      responses:
+        '200':
+          description: Updated set of pinned tags
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  pattern: '^[a-fA-F0-9]24}$'
+                example: [60d327dc90f320008498ea7d, 70d327dc90f320108498ea7d]
+                description: Pinned tags ids
+
+components:
+  schemas:
+    College:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: '507f191e810c19729de860ea'
+          pattern: '^[a-fA-F0-9]24}$'
+          description: ObjectID
+        mysqlId:
+          type: integer
+          example: 4
+          description: MySQL DB id
+        ipedsId:
+          type: integer
+          example: 100937
+          description: Int. Postsecondary Educ. Data System Id
+        updatedAt:
+          type: string
+          example: '2021-06-18T06:18:55.301Z'
+          description: The time of the last update
+          format: date-time
+        title:
+          type: string
+          example: 'Birmingham Southern College'
+          description: College name
+        shortTitle:
+          type: string
+          example: Birmingham Coll.
+          description: College sort name
+        address:
+          type: object
+          properties:
+            state:
+              type: string
+              example: AL
+              description: State abrogation
+            zip:
+              type: string
+              example: '35254'
+              description: Zipe colde
+            city:
+              type: string
+              example: Birmingham
+              description: City name
+            street:
+              type: string
+              example: '900 Arkadelphia Road'
+              description: School address
+        location:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [Point]
+              example: Point
+              description: GeoPoint
+            coordinates:
+              type: array
+              items:
+                type: number
+              minItems: 2
+              maxItems: 2
+              example: [86.9291992, 33.5446014]
+              description: '[longitude, latitude]'
+        phone:
+          type: object
+          properties:
+            general:
+              type: string
+              example: '2052264700'
+              description: School general telephone
+            financial:
+              type: string
+              example: '2052264688'
+              description: School financial aid telephone
+            administrative:
+              type: string
+              example: '2052264696'
+              description: School administrative telephone
+        url:
+          type: object
+          properties:
+            school:
+              type: string
+              example: 'bsc.edu'
+              description: School web address
+            athletes:
+              type: string
+              example: 'www.bscsports.net'
+              description: School athletes web page
+            logo:
+              type: string
+              example: '5468707.png'
+              description: School logo Url
+        student:
+          type: object
+          properties:
+            men:
+              type: integer
+              example: 528
+              description: Undergraduate man
+            women:
+              type: integer
+              example: 751
+              description: Undergraduate women
+        hidden:
+          type: boolean
+          example: false
+          description: True if school is archived
+
+    SportAttributes:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: '60d327dc90f320008498ea7d'
+          pattern: ^[a-fA-F0-9]24}$
+          description: ObjectID
+        ncsaId:
+          type: integer
+          example: 17634
+          description: NCSA sport Id
+        title:
+          type: string
+          example: "Women's Water Polo"
+          description: Sport name
+        updatedAt:
+          type: string
+          example: '2021-06-18T06:18:55.301Z'
+          description: The time of the last update
+          format: date-time
+        shortTitle:
+          type: string
+          example: 'WWP'
+          description: Sport's short name
+        gender:
+          type: string
+          enum: [M, F]
+          example: M
+          description: Gender
+        published:
+          type: boolean
+          example: true
+          description: False if sport is archived
+        positions:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                example: 'Goalie'
+                description: Position's name
+              shortLabel:
+                type: string
+                example: 'Goali'
+                description: Position's short name
+      required:
+        - '_id'
+        - ncsaId
+        - title
+        - updatedAt
+        - shortTitle
+        - gender
+        - positions
+        - published
+
+    SportsUpdateDto:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: '60d327dc90f320008498ea7d'
+          pattern: ^[a-fA-F0-9]24}$
+          description: ObjectID
+        ncsaId:
+          type: integer
+          example: 17634
+          description: NCSA sport Id
+        title:
+          type: string
+          example: "Women's Water Polo"
+          description: Sport name
+        shortTitle:
+          type: string
+          example: 'WWP'
+          description: Sport's short name
+        gender:
+          type: string
+          enum: [M, F]
+          example: M
+          description: Gender
+        published:
+          type: boolean
+          example: true
+          description: False if sport is archived
+        positions:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                example: 'Goalie'
+                description: Position's name
+              shortLabel:
+                type: string
+                example: 'Goali'
+                description: Position's short name
+      required:
+        - '_id'
+
+    SportCreateDto:
+      type: object
+      properties:
+        ncsaId:
+          type: integer
+          example: 17634
+          description: NCSA sport Id
+        title:
+          type: string
+          example: "Women's Water Polo"
+          description: Sport name
+        shortTitle:
+          type: string
+          example: 'WWP'
+          description: Sport's short name
+        gender:
+          type: string
+          enum: [M, F]
+          example: M
+          description: Gender
+        published:
+          type: boolean
+          example: true
+          description: False if sport is archived
+        positions:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                example: 'Goalie'
+                description: Position's name
+              shortLabel:
+                type: string
+                example: 'Goali'
+                description: Position's short name
+      required:
+        - ncsaId
+        - title
+        - shortTitle
+        - gender
+        - positions
+        - published
+
+    TagAttributes:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: '507f191e810c19729de860ea'
+          pattern: '^[a-fA-F0-9]24}$'
+          description: Tag document Id
+        collegeId:
+          type: string
+          example: '607f191e810c19729de860ea'
+          pattern: '^[a-fA-F0-9]24}$'
+          description: College document Id
+        sportId:
+          type: string
+          example: '707f191e810c19729de860ea'
+          pattern: '^[a-fA-F0-9]24}$'
+          description: Sport document Id
+        coachId:
+          type: string
+          example: '807f191e810c19729de860ea'
+          pattern: '^[a-fA-F0-9]24}$'
+          description: Owner (coach) document Id
+        title:
+          type: string
+          example: Recommended
+          description: Tag title
+        description:
+          type: string
+          example: Recommendation to contact with the athlete
+          description: Description for the tag
+        updatedAt:
+          type: string
+          example: '2021-06-18T06:18:55.301Z'
+          description: The time of the last update
+          format: date-time
+        archived:
+          type: boolean
+          example: false
+          description: While true cannot be set to an athlete
+        color:
+          type: string
+          example: '#468ee5'
+          description: Tag color
+        icon:
+          type: string
+          example: heart
+          description: Tag icon
+        position:
+          type: integer
+          example: 1
+          description: Display position
+        private:
+          type: string
+          example: false
+          description: If then tag can be used only by the owner
+        kind:
+          type: string
+          enum: [primary, regular]
+          example: regular
+          description: Tag kind
+      required:
+        - '_id'
+        - collegeId
+        - sportId
+        - coachId
+        - title
+        - updatedAt
+        - archived
+        - color
+        - icon
+        - kind
+        - private
+
+    TagCreateDto:
+      type: object
+      properties:
+        sportId:
+          type: string
+          example: 707f191e810c19729de860ea
+          pattern: ^[a-fA-F0-9]24}$
+          description: Sport document Id
+        title:
+          type: string
+          example: Recommended
+          description: Tag title
+        description:
+          type: string
+          example: Recommendation to contact with the athlete
+          description: Description for the tag
+        archived:
+          type: boolean
+          example: false
+          description: While true cannot be set to an athlete
+        color:
+          type: string
+          example: '#468ee5'
+          description: Tag color
+        icon:
+          type: string
+          example: heart
+          description: Tag icon
+        position:
+          type: integer
+          example: 1
+          description: Display position
+        private:
+          type: string
+          example: false
+          description: If then tag can be used only by the owner
+        kind:
+          type: string
+          enum:
+            - primary
+            - regular
+          example: regular
+          description: Tag kind
+      required:
+        - sportId
+        - title
+        - archived
+        - color
+        - icon
+        - kind
+        - private
+
+    TagUpdateDto:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 507f191e810c19729de860ea
+          pattern: ^[a-fA-F0-9]24}$
+          description: Tag document Id
+        title:
+          type: string
+          example: Recommended
+          description: Tag title
+        description:
+          type: string
+          example: Recommendation to contact with the athlete
+          description: Description for the tag
+        archived:
+          type: boolean
+          example: false
+          description: While true cannot be set to an athlete
+        color:
+          type: string
+          example: '#468ee5'
+          description: Tag color
+        icon:
+          type: string
+          example: heart
+          description: Tag icon
+        position:
+          type: integer
+          example: 1
+          description: Display position
+        private:
+          type: string
+          example: false
+          description: If then tag can be used only by the owner
+        kind:
+          type: string
+          enum:
+            - primary
+            - regular
+          example: regular
+          description: Tag kind
+      required:
+        - '_id'
+
+    CoachAttributes:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: '60d327dc90f320008498ea7d'
+          pattern: ^[a-fA-F0-9]24}$
+          description: ObjectID
+        email:
+          type: string
+          example: example_email@example.com
+          description: Coach email
+        role:
+          type: string
+          enum: [admin, manager, coach]
+          example: coach
+          description: Coach role
+        updatedAt:
+          type: string
+          example: '2021-07-01T16:41:37.483Z'
+          description: The time of the last update
+          format: date-time
+        name:
+          type: string
+          example: Alex
+          description: Coach name
+        surname:
+          type: string
+          example: Turner
+          description: Coach surname
+        sports:
+          type: array
+          items:
+            $ref: '#/components/schemas/SportAttributes'
+        college:
+          type: object
+          properties:
+            _id:
+              type: string
+              example: '60d327dc90f320008498ea7d'
+              pattern: ^[a-fA-F0-9]24}$
+              description: ObjectID
+            ipedsId:
+              type: integer
+              example: 100937
+              description: Int. Postsecondary Educ. Data System Id
+            title:
+              type: string
+              example: 'Birmingham Southern College'
+              description: College name
+            shortTitle:
+              type: string
+              example: 'Bir. South. Col.'
+              description: short college name
+        pinnedTags:
+          type: array
+          items:
+            type: string
+          pattern: '^[a-fA-F0-9]24}$'
+          example: [60d327dc90f320008498ea7d, 70d327dc90f320108498ea7d]
+          description: Pinned tags ids
+        contacts:
+          type: object
+          properties:
+            email:
+              type: string
+              description: Coach email
+              example: example_email@example.com
+            twitter:
+              type: string
+              description: Coach twitter
+              example: '@mytwitter'
+            telephone:
+              type: string
+              description: Phone number
+              example: +12223333333
+      required:
+        - '_id'
+        - email
+        - role
+        - updatedAt
+        - name
+        - surname
+        - sports
+        - pinnedTags
+        - college
+        - contacts
+
+  securitySchemes:
+    userLoginBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

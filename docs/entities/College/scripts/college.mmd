@@ -1,0 +1,54 @@
+erDiagram
+  COLLEGE ||--|| ADDRES : contains
+  COLLEGE ||--|| LOCATION : contains
+  LOCATION ||--|| COORDINATES : elements
+  LOCATION ||--|| TYPE : oneOf
+  COLLEGE ||--|| PHONE : contains
+  COLLEGE ||--|| URL : contains
+  COLLEGE ||--|| STUDENT : contains
+  COLLEGE {
+    ObjectID mongo_id
+    integer mysqlId
+    integer ipedsId
+    string title
+    string shortTitle
+    date updatedAt
+    object address
+    object location
+    object coordinates
+    object phone
+    object url
+    object student
+    boolean hidden
+    }
+  ADDRES {
+    string state
+    string zip
+    string city
+    string street
+  }
+  LOCATION {
+    enum Type
+    array coordinates
+  }
+  TYPE {
+    string Point
+  }
+  COORDINATES {
+    float longitude
+    float latitude
+  }
+  PHONE {
+    string general
+    string financial
+    string administrative
+  }
+  URL {
+    string school
+    string athletes
+    string logo
+  }
+  STUDENT {
+    integer men
+    integer women
+  }

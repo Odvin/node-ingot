@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "required": [
+    "ncsaId",
+    "title",
+    "shortTitle",
+    "gender",
+    "published",
+    "positions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ncsaId": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "shortTitle": {
+      "type": "string"
+    },
+    "gender": {
+      "enum": ["M", "F"]
+    },
+    "published": {
+      "type": "boolean"
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "shortLabel"],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "shortLabel": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
