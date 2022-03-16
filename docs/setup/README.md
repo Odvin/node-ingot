@@ -117,11 +117,13 @@
        GET _cat/indices?v
        ```
 
-11. Run PostgreSQL Server
+11. Run PostgreSQL Server. Schema will be configured **automatically**.
 
     ```
     docker compose up postgres-db
     ```
+
+    If you need to work with Postgres manually, follow these commands:
 
     1. Connect to the container that runs Postgres
 
@@ -129,7 +131,7 @@
        docker exec -it athletes-postgres bash
        ```
 
-    2. Create database (inside **athletes-postgres** container)
+    2. An example of creating a database (inside **athletes-postgres** container)
 
        ```
        psql -d athletes-db -U itRDevUser < /usr/src/migrations/schema.up.sql
