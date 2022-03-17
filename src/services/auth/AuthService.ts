@@ -43,15 +43,6 @@ export class AuthService {
 
     return bcrypt.hash(password, SALT_ROUNDS);
   }
-
-  private async validatePassword(
-    userCredentials: UserCredentials,
-    hashedPassword: string
-  ): Promise<boolean> {
-    const { password: plainPassword } = userCredentials;
-
-    return bcrypt.compare(plainPassword, hashedPassword);
-  }
 }
 
 export default new AuthService(secret, expiresIn);
