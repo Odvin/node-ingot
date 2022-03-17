@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 
 import { jwtConfig } from '../../config';
 
-import { UserCredentials, UserTokenPayload } from '../contracts';
+import { UserTokenPayload } from '../contracts';
 
 const { secret, expiresIn } = jwtConfig;
 
@@ -42,15 +42,6 @@ export class AuthService {
     const SALT_ROUNDS = 10;
 
     return bcrypt.hash(password, SALT_ROUNDS);
-  }
-
-  private async validatePassword(
-    userCredentials: UserCredentials,
-    hashedPassword: string
-  ): Promise<boolean> {
-    const { password: plainPassword } = userCredentials;
-
-    return bcrypt.compare(plainPassword, hashedPassword);
   }
 }
 

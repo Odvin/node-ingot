@@ -73,6 +73,7 @@ services:
     volumes:
       - postgres-store:/var/lib/pgsql/data
       - ./src/databases/postgre/migrations:/usr/src/migrations
+      - ./src/databases/postgre/migrations/schema.up.sql:/docker-entrypoint-initdb.d/schema.up.sql
     networks:
       - athletes
 
