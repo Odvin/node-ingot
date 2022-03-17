@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 
 import { jwtConfig } from '../../config';
 
-import { UserCredentials, UserTokenPayload } from '../contracts';
+import { UserTokenPayload } from '../contracts';
 
 const { secret, expiresIn } = jwtConfig;
 
